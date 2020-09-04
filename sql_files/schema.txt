@@ -222,5 +222,32 @@ select continent from world
 group by continent
 having sum(population)>=100000000
 
+#The first example shows the goal scored by a player with the last name 'Bender'. The * says to list all the columns in the table - a shorter way of saying matchid, teamid, player, gtime
+
+Modify it to show the matchid and player name for all goals scored by Germany. To identify German players, check for: teamid = 'GER'
+
+SELECT matchid, player FROM goal 
+  WHERE teamid LIKE '%GER'
+
+#Show id, stadium, team1, team2 for just game 1012
+SELECT id,stadium,team1,team2
+  FROM game
+where id=1012
+
+#The FROM clause says to merge data from the goal table with that from the game table. The ON says how to figure out which rows in game go with which rows in goal - the matchid from goal must match id from game. (If we wanted to be more clear/specific we could say
+ON (game.id=goal.matchid)
+SELECT *
+  FROM game JOIN goal ON (id=matchid)
+
+#Modify it to show the player, teamid, stadium and mdate for every German goal.
+SELECT player, teamid, stadium, mdate 
+  FROM game JOIN goal ON (id=matchid)
+where teamid='GER'
+
+#Show the team1, team2 and player for every goal scored by a player called Mario player LIKE 'Mario%'
+select team1,team2,player 
+from game join goal on (game.id=goal.matchid)
+where player like 'Mario%'
+
 
 
