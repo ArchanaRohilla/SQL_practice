@@ -125,3 +125,51 @@ where yr=1980
 and subject not like '%Chemistry%'
 and subject not like '%Medicine%'
 
+#Show year, subject, and name of people who won a 'Medicine' prize in an early year (before 1910, not including 1910) together with winners of a 'Literature' prize in a later year (after 2004, including 2004)
+
+select * from nobel
+where (subject='Medicine' and yr<1910) or (subject = 'Literature' and yr >=2004)
+
+#Find all details of the prize won by PETER GRÜNBERG
+select * from nobel
+where winner='PETER GRÜNBERG'
+
+#Find all details of the prize won by EUGENE O'NEILL
+
+select * from nobel
+where winner='EUGENE O''NEILL'
+
+#List the winners, year and subject where the winner starts with Sir. Show the the most recent first, then by name order.
+select winner, yr, subject from nobel
+where winner like 'Sir%'
+
+#The expression subject IN ('Chemistry','Physics') can be used as a value - it will be 0 or 1.
+
+Show the 1984 winners and subject ordered by subject and winner name; but list Chemistry and Physics last.
+The CASE statement goes through conditions and returns a value when the first condition is met (like an IF-THEN-ELSE statement). So, once a condition is true, it will stop reading and return the result. If no conditions are true, it returns the value in the ELSE clause.
+
+If there is no ELSE part and no conditions are true, it returns NULL.
+CASE
+    WHEN condition1 THEN result1
+    WHEN condition2 THEN result2
+    WHEN conditionN THEN resultN
+    ELSE result
+END;
+The following SQL will order the customers by City. However, if City is NULL, then order by Country:
+SELECT CustomerName, City, Country
+FROM Customers
+ORDER BY
+(CASE
+    WHEN City IS NULL THEN Country
+    ELSE City
+END);
+
+SELECT  winner,subject from nobel 
+WHERE yr=1984
+ORDER BY case 
+when subject in ('Chemistry','Physics') then 2
+else 1 end,subject, winner
+
+#List all the continents - just once each.
+select distinct continent from world 
+
