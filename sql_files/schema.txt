@@ -309,4 +309,24 @@ SELECT matchid, mdate, count(teamid)
 group by matchid, mdate
 
 
-#
+#SELECT 
+mdate,
+team1,
+SUM(
+	case
+	when teamid=team1 then 1
+	ELSE 0
+	END
+) 
+AS score1,
+team2,
+SUM(
+	case
+	when teamid=team2 then 1
+	ELSE 0
+	END
+) 
+AS score2
+FROM game gm LEFT JOIN goal g ON(gm.id=g.matchid)
+GROUP BY mdate,team1,team2
+ORDER BY mdate,team1,team2
