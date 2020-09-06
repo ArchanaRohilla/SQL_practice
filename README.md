@@ -1,2 +1,2 @@
 # SQL_practice
-SQL_practice
+SQL is a standard language for storing, manipulating and retrieving data in databases.
