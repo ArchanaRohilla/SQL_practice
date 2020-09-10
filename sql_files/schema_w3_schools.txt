@@ -346,3 +346,31 @@ The following SQL statement shows the equivalent example using ROWNUM (for Oracl
 Example
 SELECT * FROM Customers
 WHERE Country='Germany' AND ROWNUM <= 3;
+
+#The SQL MIN() and MAX() Functions
+The MIN() function returns the smallest value of the selected column.
+
+The MAX() function returns the largest value of the selected column.
+
+MIN() Syntax
+SELECT MIN(column_name)
+FROM table_name
+WHERE condition;
+MAX() Syntax
+SELECT MAX(column_name)
+FROM table_name
+WHERE condition;
+
+#MAX() Example
+The following SQL statement finds the price of the most expensive product:
+
+Example
+SELECT MAX(Price) AS LargestPrice
+FROM Products;
+
+#MIN() Example
+The following SQL statement finds the price of the cheapest product:
+
+Example
+SELECT MIN(Price) AS SmallestPrice
+FROM Products;
