@@ -352,4 +352,27 @@ group by yr,subject
 having count(winner)=3
 
 
+#Obtain the cast list for 'Casablanca'.
+select name from actor 
+inner join casting
+on actor.id=casting.actorid
+where movieid=11768
+
+#Obtain the cast list for the film 'Alien'
+select name from actor 
+inner join casting
+on actor.id=casting.actorid
+inner join movie
+on casting.movieid=movie.id
+where title= 'Alien'
+
+#List the films in which 'Harrison Ford' has appeared
+select title from movie
+inner join casting
+on movie.id=casting.movieid
+inner join actor
+on casting.actorid=actor.id
+where name= 'Harrison Ford'
+
+
 
