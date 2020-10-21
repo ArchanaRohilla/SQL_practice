@@ -334,4 +334,10 @@ FROM game JOIN goal ON(id=matchid)
 GROUP BY mdate,team1,team2
 ORDER BY mdate,team1,team2
 
+#Show the years in which three prizes were given for Physics.
+select yr from nobel
+where subject='Physics'
+group by yr
+having count(*)=3
+
 
