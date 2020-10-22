@@ -383,6 +383,22 @@ on casting.actorid=actor.id
 where name= 'Harrison Ford' and ord<>1
 
 #List the films together with the leading star for all 1962 films.
+select title, name from movie
+inner join casting
+on movie.id=casting.movieid
+inner join actor
+on casting.actorid=actor.id
+where yr= 1962  and ord=1
+
+#List the film title and the leading actor for all of the films 'Julie Andrews' played in.
+SELECT title, name FROM
+  movie JOIN casting ON (movie.id=movieid and ord=1)
+        JOIN actor   ON actorid=actor.id
+WHERE movieid in (
+select movieid from casting
+where actorid in (
+select id from actor
+where name =  'Julie Andrews'))
 
 
 
